@@ -13,12 +13,18 @@ def get_weather():
     feels_like = data['main']['feels_like']
     humidity = data['main']['humidity']
 
+    # Проверяем, есть ли дождь в описании
+    rain_warning = ""
+    if "дожд" in desc.lower():
+        rain_warning = "\n☔️ Сегодня возможен дождь! Не забудь зонт."
+
     return f"""
 🌍 Доброе утро! Погода в Киеве:
 🌡 Температура: {round(temp)}°C
 🌤 {desc.capitalize()}
 🌡 Ощущается как: {round(feels_like)}°C
 💧 Влажность: {humidity}%
+{rain_warning}
 
 Хорошего дня! ☀️
 """
